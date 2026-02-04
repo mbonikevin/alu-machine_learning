@@ -1,32 +1,28 @@
 #!/usr/bin/env python3
-"""
-this module has the function to get the determinant of matrix
-"""
+"""matrix determinant helper"""
 
 
-def determinant(matrix):
-    """
-    Calculating the determinant
-    """
-    if matrix == [[]]:
+def determinant(mat):
+    """return determinant"""
+    if mat == [[]]:
         return 1
 
-    if not all(isinstance(row, list) for row in matrix):
-        raise TypeError("must be a list of lists")
+    if not all(isinstance(r, list) for r in mat):
+        raise TypeError("matrix must be a list of lists")
 
-    if not all(len(matrix) == len(row) for row in matrix):
-        raise ValueError("must be a square matrix")
+    n = len(mat)
+    if not all(len(r) == n for r in mat):
+        raise ValueError("matrix must be a square matrix")
 
-    if len(matrix) == 1:
-        return matrix[0][0]
+    if n == 1:
+        return mat[0][0]
 
-    if len(matrix) == 2:
-        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+    if n == 2:
+        return mat[0][0] * mat[1][1] - mat[0][1] * mat[1][0]
 
-    size = len(matrix)
-    answer = 0
-    for j in range(size):
-        sign = (-1)**j
-        sub_matrix = [row[:j] + row[j+1:] for row in matrix[1:]]
-        answer += sign * matrix[0][j] * determinant(sub_matrix)
-    return answer
+    total = 0
+    for col in range(n):
+        sub = [r[:col] + r[col + 1:] for r in mat[1:]]
+        total += ((-1) ** col) * mat[0][col] * determinant(sub)
+
+    return total
