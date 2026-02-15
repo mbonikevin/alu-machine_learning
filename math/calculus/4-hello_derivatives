@@ -1,3 +1,0 @@
-#!/usr/bin/env python3
-"""hello, derivatives"""
-print("4x^3 + 9x^2 - 5")
