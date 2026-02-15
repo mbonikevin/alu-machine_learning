@@ -1,0 +1,3 @@
+#!/usr/bin/env python3
+"""partial truths are often more insidious than total falsehoods"""
+print("xe^{xy}")

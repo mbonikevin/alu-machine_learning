@@ -1,0 +1,3 @@
+#!/usr/bin/env python3
+"""a log on the fire"""
+print("ln(x) + 1")

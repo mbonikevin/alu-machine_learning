@@ -1,0 +1,3 @@
+#!/usr/bin/env python3
+"""double whammy"""
+print("9ln(2)")
