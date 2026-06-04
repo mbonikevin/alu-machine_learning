@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""loss"""
+"""this module calculates the softmax cross-entropy loss of a prediction"""
 import tensorflow as tf
 
 

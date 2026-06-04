@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""forward propagation"""
+"""this module creates the forward propagation graph for the network"""
 create_layer = __import__('1-create_layer').create_layer
 
 

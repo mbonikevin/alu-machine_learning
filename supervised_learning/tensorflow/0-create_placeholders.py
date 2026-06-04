@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""placeholders"""
+"""this module creates the x and y placeholders for the network"""
 import tensorflow as tf
 
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""evaluate"""
+"""this module evaluates the output of a neural network"""
 import tensorflow as tf
 
 

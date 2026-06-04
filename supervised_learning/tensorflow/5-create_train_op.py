@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""train op"""
+"""this module creates the training operation for the network"""
 import tensorflow as tf
 
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""create layer"""
+"""this module creates a layer for the neural network"""
 import tensorflow as tf
 
 
