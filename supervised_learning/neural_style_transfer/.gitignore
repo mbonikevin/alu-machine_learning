@@ -1,0 +1,4 @@
+__pycache__/
+vgg_base_model
+*.h5
+starry_gate*.jpg
