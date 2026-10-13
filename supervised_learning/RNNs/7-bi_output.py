@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+"""cell of a bidirectional RNN"""
+
+import numpy as np
+
+
+class BidirectionalCell:
+    """single step of a bidirectional RNN"""
+
+    def __init__(self, i, h, o):
+        """set up the weights for both directions and the output"""
+        self.Whf = np.random.randn(i + h, h)
+        self.Whb = np.random.randn(i + h, h)
+        self.Wy = np.random.randn(2 * h, o)
+        self.bhf = np.zeros((1, h))
+        self.bhb = np.zeros((1, h))
+        self.by = np.zeros((1, o))
+
+    def forward(self, h_prev, x_t):
+        """run one time step in the forward direction"""
+        concat = np.concatenate((h_prev, x_t), axis=1)
+        return np.tanh(np.matmul(concat, self.Whf) + self.bhf)
+
+    def backward(self, h_next, x_t):
+        """run one time step in the backward direction"""
+        concat = np.concatenate((h_next, x_t), axis=1)
+        return np.tanh(np.matmul(concat, self.Whb) + self.bhb)
+
+    def output(self, H):
+        """turn the concatenated hidden states into outputs"""
+        t = H.shape[0]
+        Y = []
+        for step in range(t):
+            y = np.matmul(H[step], self.Wy) + self.by
+            e = np.exp(y - np.max(y, axis=1, keepdims=True))
+            Y.append(e / np.sum(e, axis=1, keepdims=True))
+        return np.array(Y)
